@@ -66,9 +66,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-3 d-none d-sm-block" style="margin-bottom: 20px">
+                    <div class="col-10 d-none d-sm-block" style="margin-bottom: 20px">
                         <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                            <input class="form-control col-3 mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
                             <button class="btn btn-primary" type="submit"> <i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -96,8 +96,8 @@
                             <th>Email</th>
                             <th>City</th>
                             <th>Role</th>
-                            <th>UpdatedAt</th>
-                            <th>CreatedAt</th>
+                            <th>Update</th>
+                            <th>Create</th>
                             <th colspan="2">Action</th>
                         </tr>
                         </thead>

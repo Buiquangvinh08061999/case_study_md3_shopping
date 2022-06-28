@@ -145,14 +145,14 @@
         </div>
 
               <c:forEach items="${requestScope['errors']}" var="item">
-                  <ul class="errors">
+                  <ul class="alert alert-danger">
                       <li>${item}</li>
                   </ul>
               </c:forEach>
 
             <div class="">
                 <c:if test="${requestScope['success'] == true}">
-                    <ul class="success">
+                    <ul class="alert alert-success">
                         <li>Thêm mới thành công</li>
                     </ul>
                 </c:if>

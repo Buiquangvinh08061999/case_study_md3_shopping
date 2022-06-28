@@ -64,9 +64,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 d-none d-sm-block" style="margin-bottom: 20px">
+                    <div class="col-10 d-none d-sm-block" style="margin-bottom: 20px">
                         <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                            <input class="form-control col-3 mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -92,8 +92,8 @@
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Category</th>
-                            <th>UpdatedAt</th>
-                            <th>CreatedAt</th>
+                            <th>Update</th>
+                            <th>Create</th>
                             <th colspan="2">Action</th>
                         </tr>
                         </thead>
@@ -127,7 +127,7 @@
     </div>
     <script>
         function showMess(id){
-            var option = confirm("Bạn có chắc muốn xóa ID số " + id + " này không?")
+            var option = confirm("Bạn có chắc muốn xóa sản phẩm này không?")
             if(option === true){
                 window.location.href ='product?action=delete&sid=' + id;
             }

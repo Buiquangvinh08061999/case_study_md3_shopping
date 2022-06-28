@@ -148,12 +148,7 @@ public class CPProductServlet extends HttpServlet {
         String strSize = request.getParameter("size");
         String color = request.getParameter("color");
         String img = request.getParameter("file");
-//        Product product = new Product(Integer.parseInt(id),title,BigDecimal.valueOf(Long.parseLong(price)),Integer.parseInt(quantity),Integer.parseInt(idCategory),Integer.parseInt(size),color,img);
 
-//        boolean success = false;
-//        success = productService.update(product);
-//
-//        dispatcher.forward(request, response);
         List<String> errors = new ArrayList<>();
 
         if(title.equals("")){
@@ -169,6 +164,7 @@ public class CPProductServlet extends HttpServlet {
         if(strIdCategory.equals("")){
             errors.add("IdCategory không được để trống");
         }
+
         if(strSize.equals("")){
             errors.add("Size không được để trống");
         }
@@ -192,10 +188,13 @@ public class CPProductServlet extends HttpServlet {
             errors.add("Nhập sai kiểu dữ liệu Quantity HOẶC Nhập sai số lượng Quantity là số âm HOẶC số lượng lớn hơn 999");
         }
 
+        Product product = null;
+
         boolean success = false;
+
         if(errors.size() == 0){
-            Product product = new Product(title,BigDecimal.valueOf(Long.parseLong(strPrice)),Integer.parseInt(strQuantity),Integer.parseInt(strIdCategory),Integer.parseInt(strSize),color,img);
-            success = productService.create(product);
+            product = new Product(Integer.parseInt(id),title,BigDecimal.valueOf(Long.parseLong(strPrice)),Integer.parseInt(strQuantity),Integer.parseInt(strIdCategory),Integer.parseInt(strSize),color,img);
+            success = productService.update(product);
         }
 
         if (success) {
@@ -208,11 +207,13 @@ public class CPProductServlet extends HttpServlet {
             request.setAttribute("errors",errors);
         }
 
+        request.setAttribute("product", product);
+
+        List<Catogory> list2 = catogoryService.findAll();
+        request.setAttribute("listC" , list2);
 
         dispatcher.forward(request,response);
     }
-
-
 
 
 

@@ -74,7 +74,7 @@
 
                         <div class="col-sm-6 mt-3">
                             <label>Title <span class="text-danger">*</span></label>
-                            <select name="title"  class="form-control" id="title">
+                            <select name="title"  class="form-control" required id="title">
                                 <option value="GIÀY THỂ THAO">GIÀY THỂ THAO</option>
                                 <option value="GIÀY LƯỜI">GIÀY LƯỜI</option>
                                 <option value="GIÀY SNEAKERS">GIÀY SNEAKERS</option>
@@ -83,7 +83,7 @@
 
                         <div class="col-sm-6 mt-3">
                             <label>Size<span class="text-danger">*</span></label>
-                            <select name="size"  class="form-control" id="size">
+                            <select name="size"  class="form-control"required id="size">
                                 <option value="38">38</option>
                                 <option value="39">39</option>
                                 <option value="40">40</option>
@@ -96,7 +96,7 @@
 
                         <div class="col-sm-6 mt-3">
                             <label>Color <span class="text-danger">*</span></label>
-                            <select name="color"  class="form-control" id="color">
+                            <select name="color"  class="form-control" required id="color">
                                 <option value="RED">RED</option>
                                 <option value="BLUE">BLUE</option>
                                 <option value="YELLOW">YELLOW</option>
@@ -112,13 +112,13 @@
                         </div>
                         <div class="col-sm-6 mt-3">
                             <label>Quantity <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" name="quantity"  min="0" required value="${product.quantity}" } >
+                            <input type="number" class="form-control" name="quantity"  min="0" required value="${product.quantity}" >
                         </div>
 
                         <div class="col-sm-6 mt-3">
                             <label for="idCategory">IdCategory <span class="text-danger">*</span></label>
 
-                            <select name="idCategory"  class="form-control"  id="idCategory">
+                            <select name="idCategory"  class="form-control"  required id="idCategory">
 
                                 <c:forEach items="${listC}" var="item">
                                     <c:choose>
@@ -137,7 +137,7 @@
 
                         <div class="col-sm-12 mt-3">
                             <label for="resume">Image</label>
-                            <input type="file" class="form-control-file" id="resume" name="file">
+                            <input type="file" class="form-control-file" required id="resume" name="file">
                         </div>
 
                         <div class="col-sm-3 mt-3">
@@ -152,14 +152,14 @@
         </div>
 
         <c:forEach items="${requestScope['errors']}" var="item">
-            <ul class="errors">
+            <ul class="alert alert-danger">
                 <li>${item}</li>
             </ul>
         </c:forEach>
 
         <div class="">
             <c:if test="${requestScope['success'] == true}">
-                <ul class="success">
+                <ul class="alert alert-success">
                     <li>Cập nhật thành công</li>
                 </ul>
             </c:if>

@@ -117,15 +117,14 @@
 
                         <div class="col-sm-6 mt-3">
                             <label>Role<span class="text-danger">*</span></label>
-                            <select name="role"  required id="role" class="form-control">
-
+                            <select name="role"  id="role" class="form-control">
                                     <option value="1">ADMIN </option>
                                     <option value="2">USER</option>
                             </select>
                         </div>
                         <div class="col-sm-6 mt-3">
                             <label for="resume">Image</label>
-                            <input type="file" required class="form-control-file" id="resume" name="file" >
+                            <input type="file"  class="form-control-file" id="resume" name="file" >
                         </div>
 
                         <div class="col-sm-3 mt-3">
@@ -136,7 +135,7 @@
                 </form>
 
                 <c:forEach items="${requestScope['errors']}" var="item">
-                    <ul class="errors">
+                    <ul class="alert alert-danger">
                         <li>${item}</li>
                     </ul>
                 </c:forEach>
@@ -145,7 +144,7 @@
 
             <div class="">
                 <c:if test="${requestScope['success'] == true}">
-                    <ul class="success">
+                    <ul class="alert alert-success">
                         <li>Cập nhật thành công</li>
                     </ul>
                 </c:if>

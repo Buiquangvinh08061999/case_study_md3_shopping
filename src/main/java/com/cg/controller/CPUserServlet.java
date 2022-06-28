@@ -79,11 +79,7 @@ public class CPUserServlet extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
-
-
-
     }
-
 
     private void deleteID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -182,9 +178,7 @@ public class CPUserServlet extends HttpServlet {
         if (cityId.equals("")){
             errors.add("City không được để trống");
         }
-        if(!cityId.equals("HUẾ") && !cityId.equals("ĐÀ NẴNG")  && !cityId.equals("QUẢNG TRỊ")  && !cityId.equals("VINH")){
-            errors.add("Danh sách City không tồn tại,Bạn vui lòng chọn lại danh sách City");
-        }
+
         if (img.equals("")) {
             errors.add("Image không được để trống");
         }
@@ -258,7 +252,7 @@ public class CPUserServlet extends HttpServlet {
         boolean isFullName = Validate.isFullNameValid(fullname);
         boolean isPhone = Validate.isPhoneValid(phone);
         boolean isEmail = Validate.isEmailValid(email);
-        boolean isRole = Validate.isRoleValid(role);
+
 
         if (usename.equals("")) {
             errors.add("Tên Username không được để trống");
@@ -278,9 +272,7 @@ public class CPUserServlet extends HttpServlet {
         if (cityId.equals("")){
             errors.add("City không được để trống");
         }
-        if(!cityId.equals("HUẾ") && !cityId.equals("ĐÀ NẴNG")  && !cityId.equals("QUẢNG TRỊ")  && !cityId.equals("VINH")){
-            errors.add("Danh sách City không tồn tại,Bạn vui lòng chọn lại danh sách City");
-        }
+
         if (img.equals("")) {
             errors.add("Image không được để trống");
         }
@@ -294,21 +286,23 @@ public class CPUserServlet extends HttpServlet {
             errors.add("Nhập Fullname sai định dạng(Tên phải viết hoa chữ cái đầu và không chứa kí tự đặt biệt và không dấu)");
         }
         if (!isPhone) {
-            errors.add("Nhập Phone sai định dạng(không bao gồm dấu cách,chữ,kí tự đặc biệt, Số điện thoại bao gồm 10 số và bắt đầu là số 0)");
+            errors.add("Phone sai định dạng(Không bao gồm dấu cách,chữ,kí tự đặc biệt,Phone gồm 10 đến 11 số và bắt đầu là số 0 và +84)");
         }
         if (!isEmail) {
             errors.add("Nhập Email sai định dạng (vd: buiquangvinh@gmail.com)");
         }
 
-        if (!isRole) {
-            errors.add("Nhập Role sai định dạng (Bắt buộc: ADMIN hoặc USER)");
+        if(!role.equals("ADMIN") && !role.equals("USER")){
+            errors.add("Vui lòng chọn ADMIN hoặc USER ");
         }
 
+        User user = null;
         boolean success = false;
         if (errors.size() == 0) {
-            User user = new User(Integer.parseInt(id), usename, password, fullname, phone, email, Integer.parseInt(cityId), role, img);
+            user = new User(Integer.parseInt(id), usename, password, fullname, phone, email, Integer.parseInt(cityId), role, img);
             success = userService.update(user);
         }
+
 
         if (success) {
             request.setAttribute("success", true);
@@ -319,6 +313,10 @@ public class CPUserServlet extends HttpServlet {
         if (errors.size() > 0) {
             request.setAttribute("errors", errors);
         }
+
+        request.setAttribute("user", user);
+        List<City> list2 = cityService.findAll();
+        request.setAttribute("listC", list2);
 
         dispatcher.forward(request, response);
     }
